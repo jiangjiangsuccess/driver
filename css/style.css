@@ -1,0 +1,71 @@
+body{margin:0;padding:0;}
+.container{position:absolute;width:100%;height:100%;background:#575eb8;overflow:hidden;}
+.logo{width:19.4%;margin:28px 0 0 28px;}
+.logo img{width:100%;}
+.container .main{position:relative;margin-top:18.5%;}
+.zhu{position:absolute;width:95%;margin-left:2.5%;}
+.zhu img{width:100%;}
+.wx_pic{position:absolute;top:-9.5%;left:10%;width:22.8%;}
+.wx_pic2{position:absolute;top:-7%;left:7%;width:22.8%;}
+.wx_pic_box{position:absolute;}
+.wx_pic_box img{width:100%;}
+.wx_tou{position:absolute;width:100%;}
+.wx_tou img{width:80%;vertical-align: middle;margin:10%;}
+.wx_name{position:absolute;top:-1.4%;left:35.4%;width:27%;border-radius:5px;}
+.wx_name2{position:absolute;top:1%;left:33.8%;width:27%;border-radius:5px;}
+.wx_name_box{position:absolute;}
+.wx_name_box img{width:100%;}
+.wx_name p,.wx_name2 p{position:absolute;color:#2a3281;font-size:16px;left:7px;padding:0;margin:0;line-height:32px;}
+.start{position:absolute;width:110px;height:30px;left:50%;margin-left:-55px;top:67%;background:#ee7c4a;border:2px solid #323876;border-radius:15px;text-align: center;line-height: 30px;color:#fff;}
+.road_box{position:absolute;top:80.9%;width:100%;}
+.road{width:100%;position:absolute;top:25px;}
+.road img{width:100%;animation: zhuan 30s linear infinite;}
+.car{width:17%;margin-left:41.5%;position:absolute;}
+.car img{width:100%;vertical-align: bottom;}
+@keyframes zhuan{
+	0%{transform:rotate(0);-webkit-transform:rotate(0)}
+	100%{transform:rotate(360deg);-webkit-transform:rotate(360deg)}
+}
+/*测试页*/
+.test1{position:absolute;width:100%;height:100%;background:#575eb8;display:none;}
+.test2{position:absolute;width:100%;height:100%;background:#575eb8;display:none;}
+.ceshi{width:83.8%;height:72%;margin-top:14.5%;margin-left:8.1%;background:#fdc333;border-radius:10px;border-top:1px solid transparent;position:relative;display:none;}
+.ti p{font-size:16px;color:#11379a;font-family:”Microsoft Yahei”;padding-left:18px;padding-right：18px;}
+.xuanxiang1,.xuanxiang2{overflow:hidden;padding-left:18px;margin-top:20px;}
+.xuanxiang1 span:first-child,.xuanxiang2 span:first-child{float:left;width:23px;height:23px;background:url(../images/kuang.png);background-size:100% 100%;}
+.xuanxiang1 span:last-child,.xuanxiang2 span:last-child{float:left;font-size:14px;color:#11379a;font-family:”Microsoft Yahei”;margin-left:5px;width:80%;}
+.btn{position:absolute;width:112px;height:37px;background:url(../images/next.png);background-size:100% 100%;bottom:11%;left:50%;margin-left:-56px;}
+.btn2{position:absolute;width:112px;height:37px;background:url(../images/chakan.png);background-size:100% 100%;bottom:11%;left:50%;margin-left:-56px;}
+.bili{position:absolute;width:112px;text-align: center;bottom:0;font-size:12px;color:#b56e3a;left:50%;margin-left:-56px;bottom:3%}
+.tubiao1{width:60px;height:60px;margin:8px auto;display:block;}
+.tubiao2{width:38px;height:66px;margin:8px auto;display:block;}
+.tubiao3{width:40px;height:65px;margin:8px auto;display:block;}
+.tubiao4{width:160px;height:61px;margin:8px auto;display:block;}
+.tubiao5{width:141px;height:63px;margin:8px auto;display:block;}
+.tubiao6{width:69px;height:75px;margin:8px auto;display:block;}
+.tubiao7{width:70px;height:61px;margin:8px auto;display:block;}
+.tubiao8{width:52px;height:45px;margin:8px auto;display:block;}
+.tubiao9{width:45px;height:55px;margin:8px auto;display:block;}
+.tubiao10{width:81px;height:61px;margin:8px auto;display:block;}
+.tubiao11{width:60px;height:60px;margin:8px auto;display:block;}
+.active{display:block}
+.foot_logo{position:absolute;width:62px;height:16px;left:50%;margin-left:-31px;bottom:10px;}
+.foot_logo img{width:100%;}
+/*称号页面*/
+.chenghao{position:absolute;width:100%;height:100%;background:#575eb8;display:none;}
+.chenghao .main2{position:relative;margin-top:20%;}
+.xiangqing{position:absolute;width:110px;height:30px;left:50%;margin-left:-55px;top:74%;background:#ee7c4a;border:2px solid #323876;border-radius:15px;text-align: center;line-height: 30px;color:#fff;}
+.footer{position:absolute;width:111px;height:28px;left:50%;margin-left:-55px;bottom:10px;}
+.footer img{width:100%;}
+/*报名详情界面*/
+.enlist{position:absolute;width:100%;height:100%;background:#575eb8;display:none;}
+.enlist_nei{width:88%;height:86%;background:rgba(255,255,255,.4);margin-left:6%;margin-top:6%;border-top:1px solid transparent;}
+.enlist_top{width:108%;margin-left:-5%;background:url(../images/form.png);background-size:100% 100%;margin-top:10px;position:relative;}
+form{position:absolute;right:12%;top:35%;}
+label{display:block;font-family:”Microsoft Yahei”;font-size:12px;}
+.cin{border:1px solid #000;background:rgba(0,0,0,0);width:200px;height:17px;}
+.cin_tel{margin-top:5px;}
+.titl{font-family:”Microsoft Yahei”;font-size:12px;width:200px;margin-top:5px;}
+form button{background:#ee7c4a;border:1px solid #21327a;width:90px;height:25px;border-radius:13px;margin-left:50px;margin-top:10px;outline: none;}
+.last_t{padding:0 10px;}
+.last_t p{padding:0;margin:0;font-size:12px;line-height:18px;}

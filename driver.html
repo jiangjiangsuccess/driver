@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta content="initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <script src="js/jquery.js"></script>
+    <style>
+        body,img{margin:0;padding:0;}
+        body,html{font-size:20px;}
+        .container{position:absolute;width:100%;height:100%;background:#575eb8;overflow: hidden;}
+        .logo{width:3.1rem;margin:0.7rem 0 0 0.7rem;}
+        .logo img{width:100%;}
+        .main{margin-top:3.15rem;}
+        .zhu{position:absolute;width:15.2rem;margin-left:0.4rem;}
+        .zhu img{width:100%;}
+        .wx_pic{position:absolute;left:1.45rem;top:-0.85rem;}
+        .wx_pic_box{width:3.475rem;}
+        .wx_pic_box img{width:100%;}
+        .wx_name{position:absolute;left:5.2rem;top:-0.225rem;}
+        .wx_name_box{width:4.25rem;}
+        .wx_name_box img{width:100%;}
+        .wx_name p{position:absolute;left:0.175rem;top:-0.25rem;font-size:0.4rem;}
+        .container .btn{position:absolute;top:17.8rem;left:5.2rem;width:5.65rem;
+            height:1.7rem;background-color:#ee7c4a;border-radius:20px;line-height:1.7rem;
+            text-align: center;color:#fff;border:2px solid #323876;}
+        .road_box{position:absolute;top:21.45rem;width:100%;}
+        .road_box .road{position:absolute;top:2.5rem;}
+        .road_box .road img{width:100%;
+            animation: zhuan 30s linear infinite;
+            -moz-animation: zhuan 30s linear infinite;
+            -webkit-animation: zhuan 30s linear infinite;
+            -o-animation: zhuan 30s linear infinite;}
+        .car{position:absolute;left:6.75rem;top:1.2rem;width:2.75rem;}
+        .car img{width:100%;}
+        @keyframes zhuan {
+            0%{transform: rotate(0)}
+            100%{transform:rotate(360deg)}
+        }
+        @-moz-keyframes zhuan {
+            0%{transform: rotate(0)}
+            100%{transform:rotate(360deg)}
+        }
+        @-webkit-keyframes zhuan {
+            0%{transform: rotate(0)}
+            100%{transform:rotate(360deg)}
+        }
+        @-o-keyframes zhuan {
+            0%{transform: rotate(0)}
+            100%{transform:rotate(360deg)}
+        }
+        /*测试页*/
+        .test1,.test2{position:absolute;width:100%;height:100%;background-color:#575eb8;display: none;}
+        .test1_box{position:absolute;top:5rem;left:1.25rem;width:13.5rem;height:18.25rem;background-color:#fdc333;border-radius:15px;display: none;}
+        .first_question p{font-size:0.825rem;font-family: "Microsoft Yahei";color:#11379a;font-weight: bold;margin:1.2rem 0 1.2rem 0.95rem;}
+        .opt1,.opt2{padding-bottom: 1rem;}
+        .opt1 span:first-child,.opt2 span:first-child{background:url(images/kuang.png) no-repeat;width:1.125rem;height:1.125rem;background-size: 100% 100%;display: inline-block;margin-left:0.95rem;margin-right:0.5rem;vertical-align: middle;}
+        .opt1 span:nth-child(2),.opt2 span:nth-child(2){font-size:0.625rem;font-family: "Microsoft Yahei";color:#11379a;}
+        .test1_box .btn{background: url(images/next.png) no-repeat;width:5.625rem;height:1.875rem;
+            background-size:100% 100%;  position:absolute;top:14.3rem;left:3.85rem;}
+        .test1_box .tip{color:#b56e3a;position:absolute;top:17rem;left:5rem;font-family: "Microsoft Yahei";
+        font-size:0.2rem;}
+        .footer_logo{background:url(images/logo2.png) no-repeat;width:3.1rem;height:0.8rem;position:absolute;
+        top:27rem;left:6.325rem;background-size:100% 100%;}
+        .first_question .tubiao{width:2.975rem;height:2.975rem;margin-left:5.2rem;margin-top:-0.85rem;}
+        .opt1 .hanzi,.opt2 .hanzi{margin-left:2.55rem;}
+        .first_question .mgb{margin-bottom:0.5rem;}
+        .first_question .tubiao3{width:2rem;height:3.25rem;margin-left:5.2rem;margin-top:-0.85rem;}
+        .first_question .tubiao4{width:8rem;height:3.05rem;margin-left:2.7rem;margin-top:-0.85rem;}
+        .first_question .tubiao5{width:7.05rem;height:3.15rem;margin-left:3.1rem;margin-top:-0.85rem;}
+        .first_question .tubiao6{width:3.425rem;height:3.75rem;margin-left:5.2rem;margin-top:-0.85rem;}
+        .first_question .tubiao7{width:3.475rem;height:3.1rem;margin-left:4.85rem;margin-top:-0.85rem;}
+        .first_question .tubiao8{width:2.6rem;height:2.25rem;margin-left:5.375rem;margin-top:-0.85rem;}
+        .first_question .tubiao9{width:2.25rem;height:2.775rem;margin-left:5.55rem;margin-top:-0.85rem;}
+        .first_question .tubiao10{width:4.05rem;height:3.075rem;margin-left:4.6rem;margin-top:-0.85rem;}
+        .first_question .tubiao11{width:2.975rem;height:2.975rem;margin-left:5.2rem;margin-top:-0.85rem;}
+        .test1_box .btn2{background: url(images/chakan.png) no-repeat;width:5.625rem;height:1.875rem;
+            background-size:100% 100%;  position:absolute;top:14.3rem;left:3.85rem;}
+        .active{display:block;}
+        .mg{margin-top:-0.7rem;}
+    </style>
+    <script>
+        !function(win) {
+            function resize() {
+                var domWidth = domEle.getBoundingClientRect().width;
+                if(domWidth / v > 540){
+                    domWidth = 540 * v;
+                }
+                win.rem = domWidth / 16;
+                domEle.style.fontSize = win.rem + "px";
+            }
+            var v, initial_scale, timeCode, dom = win.document, domEle = dom.documentElement, viewport = dom.querySelector('meta[name="viewport"]'), flexible = dom.querySelector('meta[name="flexible"]');
+            if (viewport) {
+                //viewport：<meta name="viewport"content="initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5,user-scalable=no,minimal-ui"/>
+                var o = viewport.getAttribute("content").match(/initial\-scale=(["']?)([\d\.]+)\1?/);
+                if(o){
+                    initial_scale = parseFloat(o[2]);
+                    v = parseInt(1 / initial_scale);
+                }
+            } else {
+                if (flexible) {
+                    var o = flexible.getAttribute("content").match(/initial\-dpr=(["']?)([\d\.]+)\1?/);
+                    if(o){
+                        v = parseFloat(o[2]);
+                        initial_scale = parseFloat((1 / v).toFixed(2))
+                    }
+                }
+            }
+            if (!v && !initial_scale) {
+                var n = (win.navigator.appVersion.match(/android/gi), win.navigator.appVersion.match(/iphone/gi));
+                v = win.devicePixelRatio;
+                v = n ? v >= 3 ? 3 : v >= 2 ? 2 : 1 : 1, initial_scale = 1 / v
+            }
+            //没有viewport标签的情况下
+            if (domEle.setAttribute("data-dpr", v), !viewport) {
+                if (viewport = dom.createElement("meta"), viewport.setAttribute("name", "viewport"), viewport.setAttribute("content", "initial-scale=" + initial_scale + ", maximum-scale=" + initial_scale + ", minimum-scale=" + initial_scale + ", user-scalable=no"), domEle.firstElementChild) {
+                    domEle.firstElementChild.appendChild(viewport)
+                } else {
+                    var m = dom.createElement("div");
+                    m.appendChild(viewport), dom.write(m.innerHTML)
+                }
+            }
+            win.dpr = v;
+            win.addEventListener("resize", function() {
+                clearTimeout(timeCode), timeCode = setTimeout(resize, 300)
+            }, false);
+            win.addEventListener("pageshow", function(b) {
+                b.persisted && (clearTimeout(timeCode), timeCode = setTimeout(resize, 300))
+            }, false);
+            /* 个人觉得没必要完成后就把body的字体设置为12
+             "complete" === dom.readyState ? dom.body.style.fontSize = 12 * v + "px" : dom.addEventListener("DOMContentLoaded", function() {
+             //dom.body.style.fontSize = 12 * v + "px"
+             }, false);
+             */
+            resize();
+        }(window);
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="images/logo.png" alt="logo">
+        </div>
+        <div class="main">
+            <div class="zhu">
+                <img src="images/banner.png" alt="banner">
+                <div class="wx_pic">
+                    <div class="wx_pic_box">
+                        <img src="images/wx_pic.png" alt="touxiang">
+                    </div>
+                </div>
+                <div class="wx_name">
+                    <div class="wx_name_box">
+                        <img src="images/name.png" alt="nicheng">
+                    </div>
+                    <p>微信名称显示</p>
+                </div>
+            </div>
+        </div>
+        <div class="btn" id="btnId">开始测试</div>
+        <!--   道路   -->
+        <div class="road_box">
+            <div class="road">
+                <img src="images/road.png" alt="">
+            </div>
+            <div class="car">
+                <img src="images/car.png" alt="">
+            </div>
+        </div>
+    </div>
+    <!--测试-->
+    <!--A卷-->
+    <div class="test1">
+        <!--第一题-->
+        <div class="test1_box active">
+            <div class="first_question">
+                <p>你最喜欢穿什么鞋子开车？</p>
+                <div class="opt1" data-num="第一题第一项">
+                    <span></span><span>12cm的恨天高，就问你们慌不慌</span>
+                </div>
+                <div class="opt1" data-num="第一题第二项">
+                    <span></span><span>祖传人字拖</span>
+                </div>
+                <div class="opt1" data-num="第一题第三项">
+                    <span></span><span>我爱光脚开，放飞自我</span>
+                </div>
+                <div class="opt1" data-num="第一题第四项">
+                    <span></span><span>某N牌限量款运动鞋</span>
+                </div>
+            </div>
+            <div class="btn"></div>
+            <div class="tip">第<span>1</span>题/共10题</div>
+        </div>
+        <!--第二题-->
+        <div class="test1_box">
+            <div class="first_question">
+                <p>下列标志表示什么意思？</p>
+                <img src="images/tubiao.png" class="tubiao">
+                <div class="opt1" data-num="第二题第一项">
+                    <span></span><span>禁止停车</span>
+                </div>
+                <div class="opt1" data-num="第二题第二项">
+                    <span></span><span>禁止吸烟</span>
+                </div>
+                <div class="opt1" data-num="第二题第三项">
+                    <span></span><span>禁止对随地大小便</span>
+                </div>
+                <div class="opt1" data-num="第二题第四项">
+                    <span></span><span>禁止游泳</span>
+                </div>
+            </div>
+            <div class="btn"></div>
+            <div class="tip">第<span>2</span>题/共10题</div>
+        </div>
+        <!--第三题-->
+        <div class="test1_box">
+            <div class="first_question">
+                <p>你属于下列哪种人群？</p>
+                <div class="opt1" data-num="第三题第一项">
+                    <span></span><span>路怒族，谁怼我我怼谁</span>
+                </div>
+                <div class="opt1" data-num="第三题第二项">
+                    <span></span><span>飙车族，哪里都是我的个人赛道</span>
+                </div>
+                <div class="opt1" data-num="第三题第三项">
+                    <span></span><span>秋名山车神，能超我车的算我输</span>
+                </div>
+                <div class="opt1" data-num="第三题第四项">
+                    <span></span><span>老司机，别解释了快上车</span>
+                </div>
+            </div>
+            <div class="btn"></div>
+            <div class="tip">第<span>3</span>题/共10题</div>
+        </div>
+        <!--第四题-->
+        <div class="test1_box">
+            <div class="first_question">
+                <p>请说出这个标志的含义？</p>
+                <img src="images/tubiao2.png" class="tubiao">
+                <div class="opt1" data-num="第四题第一项">
+                    <span></span><span>允许直行</span>
+                </div>
+                <div class="opt1" data-num="第四题第二项">
+                    <span></span><span>不允许直行</span>
+                </div>
+                <div class="opt1" data-num="第四题第三项">
+                    <span></span><span>直行单行路</span>
+                </div>
+                <div class="opt1" data-num="第四题第四项">
+                    <span></span><span>直行车让行</span>
+                </div>
+            </div>
+            <div class="btn"></div>
+            <div class="tip">第<span>4</span>题/共10题</div>
+        </div>
+        <!--第五题-->
+        <div class="test1_box">
+            <div class="first_question">
+                <p class="mgb">前方有个大妈正意欲碰瓷，你该<br/>怎么办？</p>
+                <div class="opt1" data-num="第五题第一项">
+                    <span></span><span>一脚油门送你上天，20年后我还是<br/><span class="hanzi">条汉子</span></span>
+                </div>
+                <div class="opt1" data-num="第五题第二项">
+                    <span></span><span>大声念出3遍咒语：你看不见我！</span>
+                </div>
+                <div class="opt1" data-num="第五题第三项">
+                    <span></span><span>刹车熄火，打开手机，加个滤镜送<br/><span class="hanzi">他上热门!深呼吸并拨打110</span></span>
+                </div>
+                <div class="opt1" data-num="第五题第四项">
+                    <span></span><span>以我的车技，能碰到我的车算我输</span>
+                </div>
+            </div>
+            <div class="btn"></div>
+            <div class="tip">第<span>5</span>题/共10题</div>
+        </div>
+        <!--第六题-->
+        <div class="test1_box">
+            <div class="first_question">
+                <p>拥挤路段遇其他车辆强行插队，你应怎样做？</p>
+                <div class="opt1" data-num="第六题第一项">
+                    <span></span><span>我XXXX，怼死你</span>
+                </div>
+                <div class="opt1" data-num="第六题第二项">
+                    <span></span><span>利落的一个白眼，然后默默地踩下刹车</span>
+                </div>
+                <div class="opt1" data-num="第六题第三项">
+                    <span></span><span>你先过，一会看我怎么弄死你^_^</span>
+                </div>
+                <div class="opt1" data-num="第六题第四项">
+                    <span></span><span>那我也要插旁边人的队，扯平啦</span>
+                </div>
+            </div>
+            <div class="btn"></div>
+            <div class="tip">第<span>6</span>题/共10题</div>
+        </div>
+        <!--第七题-->
+        <div class="test1_box">
+            <div class="first_question">
+                <p>这个地面标记表示什么？</p>
+                <img src="images/tubiao3.png" class="tubiao3">
+                <div class="opt1" data-num="第七题第一项">
+                    <span></span><span>人行横道预告</span>
+                </div>
+                <div class="opt1" data-num="第七题第二项">
+                    <span></span><span>菱形</span>
+                </div>
+                <div class="opt1" data-num="第七题第三项">
+                    <span></span><span>平行四边形</span>
+                </div>
+                <div class="opt1" data-num="第七题第四项">
+                    <span></span><span>魔法阵</span>
+                </div>
+            </div>
+            <div class="btn"></div>
+            <div class="tip">第<span>7</span>题/共10题</div>
+        </div>
+        <!--第八题-->
+        <div class="test1_box">
+            <div class="first_question">
+                <p>这个标志表示什么含义?</p>
+                <img src="images/tubiao4.png" class="tubiao4">
+                <div class="opt1" data-num="第八题第一项">
+                    <span></span><span>告诉我们前面的路叫复兴路</span>
+                </div>
+                <div class="opt1" data-num="第八题第二项">
+                    <span></span><span>告诉我们我们朝北走</span>
+                </div>
+                <div class="opt1" data-num="第八题第三项">
+                    <span></span><span>我不识字怪我咯</span>
+                </div>
+                <div class="opt1" data-num="第八题第四项">
+                    <span></span><span>环行交叉路口预告</span>
+                </div>
+            </div>
+            <div class="btn"></div>
+            <div class="tip">第<span>8</span>题/共10题</div>
+        </div>
+        <!--第九题-->
+        <div class="test1_box">
+            <div class="first_question">
+                <p>在高速公路行驶，下列做法正确的是？</p>
+                <div class="opt1" data-num="第九题第一项">
+                    <span></span><span>非紧急情况时不得在应急车道行驶<br/><span class="hanzi">或者停车</span></span>
+                </div>
+                <div class="opt1" data-num="第九题第二项">
+                    <span></span><span>可在减速/加速车道上超车、停车</span>
+                </div>
+                <div class="opt1" data-num="第九题第三项">
+                    <span></span><span>可在紧急停车带停车装卸货物</span>
+                </div>
+                <div class="opt1" data-num="第九题第四项">
+                    <span></span><span>可在路肩停车欣赏风景</span>
+                </div>
+            </div>
+            <div class="btn"></div>
+            <div class="tip">第<span>9</span>题/共10题</div>
+        </div>
+        <!--第十题-->
+        <div class="test1_box">
+            <div class="first_question">
+                <p>这个标志表示什么含义?</p>
+                <img src="images/tubiao5.png" class="tubiao5">
+                <div class="opt2" data-num="第十题第一项">
+                    <span></span><span>建议速度30km/h  </span>
+                </div>
+                <div class="opt2" data-num="第十题第二项">
+                    <span></span><span>最低速度30km/h</span>
+                </div>
+                <div class="opt2" data-num="第十题第三项">
+                    <span></span><span>最高速度30km/h</span>
+                </div>
+                <div class="opt2" data-num="第十题第四项">
+                    <span></span><span>限制速度30km/h</span>
+                </div>
+            </div>
+            <div class="btn2"></div>
+            <div class="tip">第<span>10</span>题/共10题</div>
+        </div>
+        <div class="footer_logo"></div>
+    </div>
+    <!--试卷B-->
+    <div class="test2">
+        <!--第一题-->
+        <div class="test1_box active">
+            <div class="first_question">
+                <p>天还没黑，前面有人开远光灯，你会？</p>
+                <div class="opt1" data-num="第一题第一项">
+                    <span></span><span>打开我的远光灯，来啊互相伤害啊</span>
+                </div>
+                <div class="opt1" data-num="第一题第二项">
+                    <span></span><span>闭上眼睛，用心开车</span>
+                </div>
+                <div class="opt1" data-num="第一题第三项">
+                    <span></span><span>带上我的雷朋墨镜，时尚时尚最时尚</span>
+                </div>
+                <div class="opt1" data-num="第一题第四项">
+                    <span></span><span>为什么要担心远光灯啊，我根本就是<br/><span class="hanzi">个瞎子啊</span></span>
+                </div>
+            </div>
+            <div class="btn"></div>
+            <div class="tip">第<span>1</span>题/共10题</div>
+        </div>
+        <!--第二题-->
+        <div class="test1_box">
+            <div class="first_question">
+                <p>下列标志表示什么意思？</p>
+                <img src="images/tubiao6.png" class="tubiao6">
+                <div class="opt1 mg" data-num="第二题第一项">
+                    <span></span><span>向右变道</span>
+                </div>
+                <div class="opt1" data-num="第二题第二项">
+                    <span></span><span>车道数减少</span>
+                </div>
+                <div class="opt1" data-num="第二题第三项">
+                    <span></span><span>路面变宽</span>
+                </div>
+                <div class="opt1" data-num="第二题第四项">
+                    <span></span><span>车道数增加</span>
+                </div>
+            </div>
+            <div class="btn"></div>
+            <div class="tip">第<span>2</span>题/共10题</div>
+        </div>
+        <!--第三题-->
+        <div class="test1_box">
+            <div class="first_question">
+                <p>没有监控的红绿灯路口，你会自觉遵守交通规则吗？</p>
+                <div class="opt1" data-num="第三题第一项">
+                    <span></span><span>不管有没有监控我从来都不看红绿灯</span>
+                </div>
+                <div class="opt1" data-num="第三题第二项">
+                    <span></span><span>我这素质才不闯灯好吗</span>
+                </div>
+                <div class="opt1" data-num="第三题第三项">
+                    <span></span><span>信号灯不是只有黑白的吗</span>
+                </div>
+                <div class="opt1" data-num="第三题第四项">
+                    <span></span><span>看我那天的心情^_^</span>
+                </div>
+            </div>
+            <div class="btn"></div>
+            <div class="tip">第<span>3</span>题/共10题</div>
+        </div>
+        <!--第四题-->
+        <div class="test1_box">
+            <div class="first_question">
+                <p>请说出这个标志的含义？</p>
+                <img src="images/tubiao7.png" class="tubiao7">
+                <div class="opt1" data-num="第四题第一项">
+                    <span></span><span>前方铲屎</span>
+                </div>
+                <div class="opt1" data-num="第四题第二项">
+                    <span></span><span>前方工地</span>
+                </div>
+                <div class="opt1" data-num="第四题第三项">
+                    <span></span><span>前方施工</span>
+                </div>
+                <div class="opt1" data-num="第四题第四项">
+                    <span></span><span>前方垃圾场</span>
+                </div>
+            </div>
+            <div class="btn"></div>
+            <div class="tip">第<span>4</span>题/共10题</div>
+        </div>
+        <!--第五题-->
+        <div class="test1_box">
+            <div class="first_question">
+                <p class="mgb">在行车中经过积水路面时，你一般怎么做</p>
+                <div class="opt1" data-num="第五题第一项">
+                    <span></span><span>乌龟一样的挪过去</span>
+                </div>
+                <div class="opt1" data-num="第五题第二项">
+                    <span></span><span>一脚油门过去，欣赏那美丽的水花</span>
+                </div>
+                <div class="opt1" data-num="第五题第三项">
+                    <span></span><span>地上有积水吗？不知道啊</span>
+                </div>
+                <div class="opt1" data-num="第五题第四项">
+                    <span></span><span>给行人来个泼水节</span>
+                </div>
+            </div>
+            <div class="btn"></div>
+            <div class="tip">第<span>5</span>题/共10题</div>
+        </div>
+        <!--第六题-->
+        <div class="test1_box">
+            <div class="first_question">
+                <p class="mgb">大清早开车上班，下面哪个选项比较正确？</p>
+                <div class="opt1" data-num="第六题第一项">
+                    <span></span><span>边化妆边开车，我这技术车上化妆<br/><span class="hanzi">依然美美哒</span></span>
+                </div>
+                <div class="opt1" data-num="第六题第二项">
+                    <span></span><span>边换衣服边开车，车子大就是任性</span>
+                </div>
+                <div class="opt1" data-num="第六题第三项">
+                    <span></span><span>边玩手机边开车，上网上班两不误</span>
+                </div>
+                <div class="opt1" data-num="第六题第四项">
+                    <span></span><span>边听广播边开车，再来一滴风油精<br/><span class="hanzi">醒醒脑</span></span>
+                </div>
+            </div>
+            <div class="btn"></div>
+            <div class="tip">第<span>6</span>题/共10题</div>
+        </div>
+        <!--第七题-->
+        <div class="test1_box">
+            <div class="first_question">
+                <p>车上这个标记表示什么？</p>
+                <img src="images/tubiao8.png" class="tubiao8">
+                <div class="opt1" data-num="第七题第一项">
+                    <span></span><span>汽油不足</span>
+                </div>
+                <div class="opt1" data-num="第七题第二项">
+                    <span></span><span>玻璃水不足</span>
+                </div>
+                <div class="opt1" data-num="第七题第三项">
+                    <span></span><span>水箱水不足</span>
+                </div>
+                <div class="opt1" data-num="第七题第四项">
+                    <span></span><span>冷却液不足</span>
+                </div>
+            </div>
+            <div class="btn"></div>
+            <div class="tip">第<span>7</span>题/共10题</div>
+        </div>
+        <!--第八题-->
+        <div class="test1_box">
+            <div class="first_question">
+                <p>汽车指示灯亮表示什么意思？</p>
+                <img src="images/tubiao9.png" class="tubiao9">
+                <div class="opt1" data-num="第八题第一项">
+                    <span></span><span>车内有刺客</span>
+                </div>
+                <div class="opt1" data-num="第八题第二项">
+                    <span></span><span>安全带未系</span>
+                </div>
+                <div class="opt1" data-num="第八题第三项">
+                    <span></span><span>座椅没调整好</span>
+                </div>
+                <div class="opt1" data-num="第八题第四项">
+                    <span></span><span>危险快跑</span>
+                </div>
+            </div>
+            <div class="btn"></div>
+            <div class="tip">第<span>8</span>题/共10题</div>
+        </div>
+        <!--第九题-->
+        <div class="test1_box">
+            <div class="first_question">
+                <p>请说出这个标志的含义？</p>
+                <img src="images/tubiao10.png" class="tubiao10">
+                <div class="opt1" data-num="第九题第一项">
+                    <span></span><span>共享单车专用道</span>
+                </div>
+                <div class="opt1" data-num="第九题第二项">
+                    <span></span><span>非机动车车道</span>
+                </div>
+                <div class="opt1" data-num="第九题第三项">
+                    <span></span><span>自行车专用车道</span>
+                </div>
+                <div class="opt1" data-num="第九题第四项">
+                    <span></span><span>停放自行车路段</span>
+                </div>
+            </div>
+            <div class="btn"></div>
+            <div class="tip">第<span>9</span>题/共10题</div>
+        </div>
+        <!--第十题-->
+        <div class="test1_box">
+            <div class="first_question">
+                <p>这个标志表示什么含义?</p>
+                <img src="images/tubiao11.png" class="tubiao11">
+                <div class="opt2" data-num="第十题第一项">
+                    <span></span><span>该道路只供步行，任何车辆不准进入  </span>
+                </div>
+                <div class="opt2" data-num="第十题第二项">
+                    <span></span><span>关爱孤寡老人</span>
+                </div>
+                <div class="opt2" data-num="第十题第三项">
+                    <span></span><span>关爱儿童</span>
+                </div>
+                <div class="opt2" data-num="第十题第四项">
+                    <span></span><span>注意附近有学校</span>
+                </div>
+            </div>
+            <div class="btn2"></div>
+            <div class="tip">第<span>10</span>题/共10题</div>
+        </div>
+    </div>
+    <script>
+        $("#btnId").click(function(){
+            var num=parseInt(Math.random()*2+1);
+            console.log(num);
+            if(num==1){
+                $(".test1").css("display","block");
+                $(".container").css("display","none");
+            }else{
+                $(".test2").css("display","block");
+                $(".container").css("display","none");
+            }
+        })
+       //复选框
+        $(".opt1").on("click",function(){
+            $(this).children("span:first-child").css("background-image","url(images/kuang_f.png)");
+            $(this).siblings("div").find("span:first-child").css("background-image","url(images/kuang.png)");
+            $(this).parent().next().css("background-image","url(images/next_f.png)").click(function(){
+                $(this).parent().removeClass("active").next().addClass("active");
+            });
+        })
+        //第十题的功能
+        $(".opt2").on("click",function(){
+            $(this).children("span:first-child").css("background-image","url(images/kuang_f.png)");
+            $(this).siblings("div").find("span:first-child").css("background-image","url(images/kuang.png)");
+            $(this).parent().next().css("background-image","url(images/chakan_f.png)")
+        })
+    </script>
+</body>
+
+</html>
